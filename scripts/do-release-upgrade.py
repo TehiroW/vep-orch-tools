@@ -15,8 +15,8 @@ if not 'ANSIBLE_PASSWORD' in os.environ:
     print (f"no ANSIBLE_PASSWORD defined in environmental variables")
     exit()
 
-parser = argparse.ArgumentParser(prog='vep updater',
-                                 description='This programe installs all updates on the selected vep group')
+parser = argparse.ArgumentParser(prog='vep ubuntu release updater',
+                                 description='This programe does an ubuntu release update on the selected vep group.\nMakew sure to do a standard update round (ubuntu and latest ncubed vep update) before starting this script.')
 
 parser.add_argument('-t', '--nodetype', required=True, help='''available node types:
 1) cluster primary nodes
