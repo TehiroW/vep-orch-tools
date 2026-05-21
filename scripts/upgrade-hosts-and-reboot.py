@@ -60,9 +60,8 @@ r = subprocess.run(f'''
                     
                     ansible -o -i {inventory_file} -m shell -a 'tmux send-keys -t {TERMINALID} "sudo ip netns exec \$ACTIVE_NETNS bash" enter' {nodes}
                     ansible -o -i {inventory_file} -m shell -a 'tmux send-keys -t {TERMINALID} "touch /opt/ncubed/apt_lock"' {nodes}
-                    ansible -o -i {inventory_file} -m shell -a 'tmux send-keys -t {TERMINALID} " && DEBIAN_FRONTEND=noninteractive"' {nodes}
-                    ansible -o -i {inventory_file} -m shell -a 'tmux send-keys -t {TERMINALID} " && apt -y update"' {nodes}
-                    ansible -o -i {inventory_file} -m shell -a 'tmux send-keys -t {TERMINALID} " && apt -yq upgrade"' {nodes}
+                    ansible -o -i {inventory_file} -m shell -a 'tmux send-keys -t {TERMINALID} " && DEBIAN_FRONTEND=noninteractive apt -y update"' {nodes}
+                    ansible -o -i {inventory_file} -m shell -a 'tmux send-keys -t {TERMINALID} " && DEBIAN_FRONTEND=noninteractive apt -yq upgrade"' {nodes}
                     ansible -o -i {inventory_file} -m shell -a 'tmux send-keys -t {TERMINALID} " && rm /opt/ncubed/apt_lock"' {nodes}
                     ansible -o -i {inventory_file} -m shell -a 'tmux send-keys -t {TERMINALID} " && exit" enter' {nodes}
                     
